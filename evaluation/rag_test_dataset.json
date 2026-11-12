@@ -1,0 +1,53 @@
+
+[
+  {
+    "question": "How many annual leave days are provided?",
+    "expected_answer": "18 days",
+    "expected_source": "hr_policy.txt"
+  },
+  {
+    "question": "How many sick leave days are provided?",
+    "expected_answer": "12 days",
+    "expected_source": "hr_policy.txt"
+  },
+  {
+    "question": "How long is maternity leave?",
+    "expected_answer": "26 weeks",
+    "expected_source": "hr_policy.txt"
+  },
+  {
+    "question": "When is salary credited?",
+    "expected_answer": "Last working day of each month",
+    "expected_source": "hr_policy.txt"
+  },
+  {
+    "question": "How many days can employees work remotely?",
+    "expected_answer": "Up to 2 days per week",
+    "expected_source": "it_policy.txt"
+  },
+  {
+    "question": "Is manager approval required for remote work?",
+    "expected_answer": "Yes",
+    "expected_source": "it_policy.txt"
+  },
+  {
+    "question": "How should company laptops be protected?",
+    "expected_answer": "With passwords",
+    "expected_source": "it_policy.txt"
+  },
+  {
+    "question": "What should employees do after a security incident?",
+    "expected_answer": "Report it immediately",
+    "expected_source": "it_policy.txt"
+  },
+  {
+    "question": "Summarize the leave and remote working policies.",
+    "expected_answer": "18 annual leave days, 12 sick leave days, 26 weeks maternity leave, and up to 2 remote days per week with manager approval",
+    "expected_source": "hr_policy.txt and it_policy.txt"
+  },
+  {
+    "question": "What is the company's pension contribution?",
+    "expected_answer": "Not available in the documents",
+    "expected_source": "No source"
+  }
+]

@@ -1,0 +1,37 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Streamlit
+.streamlit/
+
+# Local databases and logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Uploaded documents and vector database
+data/uploads/*
+!data/uploads/.gitkeep
+
+data/chroma_db/*
+!data/chroma_db/.gitkeep
+
+# IDE and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,6 @@
+IT Policy
+
+Employees can work remotely up to 2 days per week.
+Manager approval is required for remote work.
+Company laptops must be protected with passwords.
+Employees must report security incidents immediately.
