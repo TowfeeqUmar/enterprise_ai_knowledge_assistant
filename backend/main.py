@@ -1,4 +1,4 @@
-import logging
+﻿import logging
 import traceback
 
 logging.basicConfig(level=logging.INFO)
@@ -90,24 +90,46 @@ def ask(request: AskRequest):
         )
         return result
 
+
     except RuntimeError as exc:
         logger.exception("RAG runtime error")
-        raise HTTPException(status_code=503, detail=str(exc)) from exc
+        raise HTTPException(
+            status_code=503,
+            detail="The RAG service is temporarily unavailable. Please try again."
+        ) from exc
 
     except Exception as exc:
         logger.exception("Question processing failed")
         error_text = str(exc)
+        error_upper = error_text.upper()
 
-        if "429" in error_text or "RESOURCE_EXHAUSTED" in error_text:
+        # Gemini quota limit
+        if "429" in error_text or "RESOURCE_EXHAUSTED" in error_upper:
             raise HTTPException(
                 status_code=429,
-                detail="Gemini API quota exhausted. Please check your AI Studio usage and retry when quota resets."
+                detail="Gemini API quota exhausted. Please retry when the quota resets."
             ) from exc
 
+        # Gemini temporary service unavailability
+        if (
+            "503" in error_text
+            or "UNAVAILABLE" in error_upper
+            or "SERVER DISCONNECTED" in error_upper
+            or "REMOTEPROTOCOLERROR" in error_upper
+            or "TIMED OUT" in error_upper
+            or "TIMEOUT" in error_upper
+        ):
+            raise HTTPException(
+                status_code=503,
+                detail="Gemini is temporarily unavailable. Please try again later."
+            ) from exc
+
+        # Unexpected application errors
         raise HTTPException(
             status_code=500,
             detail=f"Question processing failed: {error_text}"
         ) from exc
+
 
 @app.get("/documents")
 def documents():
